@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301202603) do
+ActiveRecord::Schema.define(version: 20180301204726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,25 @@ ActiveRecord::Schema.define(version: 20180301202603) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "employee_positions", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "position_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "schedules", force: :cascade do |t|
     t.string "name"
     t.date "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "admin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,12 +56,10 @@ ActiveRecord::Schema.define(version: 20180301202603) do
 
   create_table "workdays", force: :cascade do |t|
     t.date "date"
-    t.bigint "schedule_id"
+    t.integer "schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["schedule_id"], name: "index_workdays_on_schedule_id"
   end
 
   add_foreign_key "users", "companies"
-  add_foreign_key "workdays", "schedules"
 end
