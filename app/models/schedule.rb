@@ -1,6 +1,8 @@
 class Schedule < ApplicationRecord
   has_many :workdays, dependent: :destroy
 
+  validates :start_date, presence: true, uniqueness: true
+
   after_save :create_workdays
 
   private
