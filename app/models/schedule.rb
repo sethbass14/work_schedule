@@ -1,5 +1,6 @@
 class Schedule < ApplicationRecord
   has_many :workdays, dependent: :destroy
+  belongs_to :admin, class_name: "User"
 
   validates :start_date, presence: true, uniqueness: true
 
