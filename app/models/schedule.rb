@@ -7,11 +7,9 @@ class Schedule < ApplicationRecord
 
   def create_workdays
     date = start_date
-    num = 7
-    while num > 0
-      self.workdays << Workday.new(date: date)
+    7.times do
+      workdays << Workday.new(date: date)
       date += 1
-      num -= 1
     end
   end
 
