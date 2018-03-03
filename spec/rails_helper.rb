@@ -45,11 +45,11 @@ RSpec.configure do |config|
     @week1_sched = Schedule.create(start_date: DateTime.now + 4, name: 'Week 1 Schedule', admin: @james)
 
 
-    @barAM = Shift.create(start_time: "06:45", end_time: "16:00", position_id: 1, name: "Bar AM")
-    @barPM = Shift.create(start_time: "16:00", end_time: "23:55", position_id: 1, name: "Bar PM")
+    @barAM = Shift.create(start_time: "06:45", end_time: "16:00", position: @bartender, name: "Bar AM")
+    @barPM = Shift.create(start_time: "16:00", end_time: "23:55", position: @bartender, name: "Bar PM")
 
-    @waiterAM = Shift.create(start_time: "06:45", end_time: "16:00", position_id: 2, name: "Wait AM")
-    @waiterPM = Shift.create(start_time: "16:00", end_time: "23:55", position_id: 2, name: "Wait AM")
+    @waiterAM = Shift.create(start_time: "06:45", end_time: "16:00", position: @waiter, name: "Wait AM")
+    @waiterPM = Shift.create(start_time: "16:00", end_time: "23:55", position: @waiter, name: "Wait AM")
 
     @workday1 = @week1_sched.workdays.first
 

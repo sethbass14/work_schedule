@@ -15,7 +15,7 @@ describe User do
       end
 
       it 'has many shifts' do
-        byebug
+        # byebug
         expect(@seth.shifts.first).to eq(@barAM)
       end
     end
