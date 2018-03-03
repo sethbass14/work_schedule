@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'database_cleaner'
 
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -25,16 +26,16 @@ RSpec.configure do |config|
   config.before(:each) do
     mud = Company.create(name: "Mud")
 
-    james = User.create(name: 'James', company: mud, admin: true)
-    seth = User.create(name: 'Seth', company: mud)
-    brendan = User.create(name: 'Brendan', company: mud)
+    @james = User.create(name: 'James', company: mud, admin: true)
+    @seth = User.create(name: 'Seth', company: mud)
+    @brendan = User.create(name: 'Brendan', company: mud)
 
     bartender = Position.create(name: 'Bartender')
     waiter = Position.create(name: 'Waiter')
 
-    seth.positions << [bartender, waiter]
-    brendan.positions << waiter
+    @seth.positions << [bartender, waiter]
+    @brendan.positions << waiter
 
-    week1_sched = Schedule.create(start_date: DateTime.now + 4, name: 'Week 1 Schedule', admin: james)
+    week1_sched = Schedule.create(start_date: DateTime.now + 4, name: 'Week 1 Schedule', admin: @james)
   end
 end
