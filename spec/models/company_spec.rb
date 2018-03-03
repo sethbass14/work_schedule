@@ -7,11 +7,11 @@ describe Company do
 
     describe 'associations' do
       it 'has many employees' do
-        expect(Company.first.employees).to include( @seth, @james, @brendan )
+        expect(Company.first.employees).to include( @seth, @james, @brendan, @bronson, @curl )
       end
     end
 
-    
+
   end
 
 end
