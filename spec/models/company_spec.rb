@@ -10,6 +10,8 @@ describe Company do
         expect(Company.first.employees).to include( @seth, @james, @brendan )
       end
     end
+
+    
   end
 
 end
