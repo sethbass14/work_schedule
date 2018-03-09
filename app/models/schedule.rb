@@ -2,7 +2,7 @@ class Schedule < ApplicationRecord
   has_many :workdays, dependent: :destroy
   belongs_to :admin, :class_name  => "User"
 
-  # validates :start_date, presence: true, uniqueness: true
+  validates :start_date, presence: true, uniqueness: true
   validate :not_in_the_past
   validate :no_overlap_dates
 
@@ -27,7 +27,7 @@ class Schedule < ApplicationRecord
   def no_overlap_dates
     Schedule.where(admin_id: admin_id).where.not(id: id).each do |schedule|
       schedule_dates = schedule.start_date..schedule.end_date
-      if schedule_dates === start_date || schedule_dates === end_date
+      if schedule_dates === start_date
         errors.add(:start_date, 'A new schedule cannot overlap with existing schedules')
       end
     end

@@ -14,7 +14,7 @@ describe Schedule do
 
   describe 'validations' do
     it 'has a unique start_date' do
-      expect((Schedule.new(start_date: DateTime.now, admin: @james)).valid?).to eq(false)
+      expect(Schedule.new(start_date: DateTime.now, admin: @james)).to_not be_valid
     end
     it 'start date is current day or in the future' do
       expect(@test_schedule1).to be_valid
@@ -23,7 +23,6 @@ describe Schedule do
 
     it 'cannot overlap dates with existing schedules' do
       expect(@test_schedule3).to_not be_valid
-      expect(@test_schedule4).to_not be_valid
     end
 
   end
