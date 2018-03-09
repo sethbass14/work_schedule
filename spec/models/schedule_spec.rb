@@ -9,7 +9,9 @@ describe Schedule do
 
   describe 'validations' do
     it 'start date is current day or in the future' do
-      expect((Schedule.new(start_date: DateTime.now)).valid?).to eq(true)
+      # byebug
+      expect((Schedule.new(start_date: DateTime.now, admin: @james)).valid?).to eq(true)
+      expect((Schedule.new(start_date: DateTime.now - 2, admin: @james)).valid?).to eq(false)
     end
   end
 

@@ -17,7 +17,8 @@ class Schedule < ApplicationRecord
   private
 
   def not_in_the_past
-    start_date >= DateTime.now
+    # byebug
+    start_date >= Date.today
   end
 
   def not_same_week

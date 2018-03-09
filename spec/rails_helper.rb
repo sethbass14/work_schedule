@@ -42,8 +42,8 @@ RSpec.configure do |config|
     @bronson.positions << @bartender
     @curl.positions << @waiter
 
-    @week1_sched = Schedule.create(start_date: DateTime.now + 4, name: 'Week 1 Schedule', admin: @james)
-    
+    @week1_sched = Schedule.create(start_date: DateTime.now, name: 'Week 1 Schedule', admin: @james)
+
 
     @barAM = Shift.create(start_time: "06:45", end_time: "16:00", position: @bartender, name: "Bar AM")
     @barPM = Shift.create(start_time: "16:00", end_time: "23:55", position: @bartender, name: "Bar PM")
