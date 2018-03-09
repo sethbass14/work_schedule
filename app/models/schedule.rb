@@ -3,10 +3,27 @@ class Schedule < ApplicationRecord
   belongs_to :admin, :class_name  => "User"
 
   validates :start_date, presence: true, uniqueness: true
+  
+
+  validates :not_in_the_past
+
+  validates :not_same_week
 
   after_create :create_workdays
 
+
+  def end_date
+    workdays.last.date
+  end
+
   private
+
+  def not_in_the_past
+  end
+
+  def not_same_week
+
+  end
 
   def create_workdays
     # if !id

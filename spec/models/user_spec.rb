@@ -11,7 +11,7 @@ describe User do
       end
 
       it 'has many employee shifts' do
-        expect(@seth.employee_shifts.first).to eq(@employee_shift1)
+        expect(@seth.employee_shifts).to eq([@employee_shift1, @employee_shift5])
       end
 
       it 'has many shifts' do
@@ -20,8 +20,13 @@ describe User do
       end
 
       it 'has many workdays' do
-        expect(@seth.workdays.first).to eq(@workday1)
+        expect(@seth.workdays).to eq([@workday1, @workday2])
       end
+
+      it 'has many positions' do
+        expect(@seth.positions).to eq([@bartender, @waiter])
+      end
+
 
     end
 

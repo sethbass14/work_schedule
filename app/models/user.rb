@@ -10,4 +10,9 @@ class User < ApplicationRecord
 
   has_many :schedules, :foreign_key => "admin_id"
 
+
+  def user_work_days(schedule_id)
+    workdays.schedule_id == schedule_id
+  end
+
 end

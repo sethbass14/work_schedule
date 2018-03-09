@@ -43,7 +43,7 @@ RSpec.configure do |config|
     @curl.positions << @waiter
 
     @week1_sched = Schedule.create(start_date: DateTime.now + 4, name: 'Week 1 Schedule', admin: @james)
-
+    
 
     @barAM = Shift.create(start_time: "06:45", end_time: "16:00", position: @bartender, name: "Bar AM")
     @barPM = Shift.create(start_time: "16:00", end_time: "23:55", position: @bartender, name: "Bar PM")
@@ -52,10 +52,12 @@ RSpec.configure do |config|
     @waiterPM = Shift.create(start_time: "16:00", end_time: "23:55", position: @waiter, name: "Wait AM")
 
     @workday1 = @week1_sched.workdays.first
+    @workday2 = @week1_sched.workdays[1]
 
     @employee_shift1 = EmployeeShift.create(employee: @seth, shift: @barAM, workday: @workday1)
     @employee_shift3 = EmployeeShift.create(employee: @bronson, shift: @barPM, workday: @workday1)
     @employee_shift2 = EmployeeShift.create(employee: @brendan, shift: @waiterAM, workday: @workday1)
     @employee_shift4 = EmployeeShift.create(employee: @curl, shift: @waiterPM, workday: @workday1)
+    @employee_shift5 = EmployeeShift.create(employee: @seth, shift: @barAM, workday: @workday2)
   end
 end
