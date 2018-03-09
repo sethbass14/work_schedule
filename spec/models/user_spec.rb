@@ -18,6 +18,11 @@ describe User do
         # byebug
         expect(@seth.shifts.first).to eq(@barAM)
       end
+
+      it 'has many workdays' do
+        expect(@seth.workdays.first).to eq(@workday1)
+      end
+
     end
 
 
