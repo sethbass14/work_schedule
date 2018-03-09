@@ -1,5 +1,10 @@
 require 'rails_helper'
 describe Schedule do
+  before(:each) do
+    @test_schedule1 = Schedule.new(start_date: DateTime.now + 100, admin: @james)
+    @test_schedule2 = Schedule.new(start_date: DateTime.now - 30, admin: @james)
+    @test_schedule3 = Schedule.new(start_date: DateTime.now + 1, name: "test schedule 3", admin: @james)
+  end
 
   describe 'instance methods' do
     it 'has an end date' do
@@ -8,11 +13,19 @@ describe Schedule do
   end
 
   describe 'validations' do
-    it 'start date is current day or in the future' do
-      # byebug
-      expect((Schedule.new(start_date: DateTime.now + 1, admin: @james)).valid?).to eq(true)
-      expect((Schedule.new(start_date: DateTime.now - 2, admin: @james)).valid?).to eq(false)
+    it 'has a unique start_date' do
+      expect((Schedule.new(start_date: DateTime.now, admin: @james)).valid?).to eq(false)
     end
+    it 'start date is current day or in the future' do
+      expect(@test_schedule1).to be_valid
+      expect(@test_schedule2).to_not be_valid
+    end
+
+    it 'cannot overlap dates with existing schedules' do
+      expect(@test_schedule3).to_not be_valid
+      expect(@test_schedule4).to_not be_valid
+    end
+
   end
 
 
