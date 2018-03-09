@@ -17,8 +17,9 @@ class Schedule < ApplicationRecord
   private
 
   def not_in_the_past
-    # byebug
-    start_date >= Date.today
+    if start_date < Date.today
+      errors.add(:start_date, 'Must be today or in the future')
+    end
   end
 
   def not_same_week
