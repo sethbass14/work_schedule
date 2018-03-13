@@ -10,9 +10,11 @@ describe User do
         expect(@seth.company).to eq(@mud)
       end
 
-      it 'has many employee shifts' do
-        expect(@seth.employee_shifts.first).to eq(@employee_shift1)
-      end
+      # it 'has many employee shifts' do
+      #   expect(@seth.employee_shifts.first).to eq(@employee_shift1)
+      # end
+
+      it { should have_many(:employee_shifts) }
 
       it 'has many shifts' do
         # byebug
@@ -23,7 +25,7 @@ describe User do
         expect(@seth.workdays.first).to eq(@workday1)
       end
 
-  
+
 
     end
 

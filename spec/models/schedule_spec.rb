@@ -27,5 +27,9 @@ describe Schedule do
 
   end
 
+  describe 'associations' do
+    it {should have_many(:workdays).dependent(true)}
+  end
+
 
 end
